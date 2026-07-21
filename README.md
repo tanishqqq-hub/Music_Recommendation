@@ -1,6 +1,6 @@
-# Hybrid Music Recommendation System
+# Musify
 
-Production-style music recommender built with offline feature engineering, matrix factorization, content-based retrieval, and a FastAPI serving layer.
+Musify is a production-style music recommender built with offline feature engineering, matrix factorization, content-based retrieval, and a FastAPI serving layer.
 
 It combines Last.fm 360K listening behavior with Spotify audio features to generate personalized, cold-start, and similar-artist recommendations.
 
