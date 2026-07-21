@@ -76,3 +76,16 @@ Thumbs.db
 !outputs/.gitkeep
 !outputs/figures/.gitkeep
 !outputs/logs/.gitkeep
+
+# Frontend dependencies
+frontend/node_modules/
+frontend/.output/
+frontend/.tanstack/
+frontend/.wrangler/
+
+# Environment files
+frontend/.env
+
+# OS
+.DS_Store
+Thumbs.db
