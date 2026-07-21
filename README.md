@@ -17,7 +17,7 @@ It combines Last.fm 360K listening behavior with Spotify audio features to gener
 - [Recommendation Pipeline](#recommendation-pipeline)
 - [Evaluation](#evaluation)
 - [Data and Artifacts](#data-and-artifacts)
-- [Why It Is Resume-Worthy](#why-it-is-resume-worthy)
+
 
 ## Overview
 
