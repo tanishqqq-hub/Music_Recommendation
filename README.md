@@ -1,8 +1,8 @@
 # Musify
 
-Musify is a production-style music recommender built with offline feature engineering, matrix factorization, content-based retrieval, and a FastAPI serving layer.
+Musify is a production-style end-to-end music recommendation system built with offline feature engineering, matrix factorization, content-based retrieval, a FastAPI serving layer, and a modern TanStack Start frontend.
 
-It combines Last.fm 360K listening behavior with Spotify audio features to generate personalized, cold-start, and similar-artist recommendations.
+It combines Last.fm 360K listening behavior with Spotify audio features to generate personalized, cold-start, and similar-artist recommendations through an interactive web interface.
 
 ## Table of Contents
 
@@ -33,6 +33,7 @@ The system is designed to solve the main recommender-system problems recruiters 
 
 ## Key Features
 
+- Modern TanStack Start frontend integrated with the FastAPI backend
 - Hybrid recommendation engine that blends popularity, SVD, and content-based signals
 - FastAPI service with typed request and response schemas
 - Config-driven startup through `configs/config.yaml`
@@ -54,6 +55,7 @@ flowchart LR
     G --> H
     H --> I[Re-ranking layer\nnovelty + diversity + dedup]
     I --> J[FastAPI API]
+    J --> K[TanStack Start Frontend]
 ```
 
 The production flow is intentionally layered:
@@ -68,7 +70,8 @@ The production flow is intentionally layered:
 
 | Area | Tools |
 |---|---|
-| API | FastAPI, Uvicorn, Pydantic |
+| Backend API | FastAPI, Uvicorn, Pydantic |
+| Frontend | TanStack Start, React, TypeScript, Tailwind CSS |
 | Data | pandas, NumPy, PyArrow |
 | Modeling | SciPy, scikit-learn |
 | Config | PyYAML |
@@ -78,21 +81,26 @@ The production flow is intentionally layered:
 
 ```text
 Music_recommendation/
-├── configs/              # Runtime configuration and artifact paths
-├── data/                 # Raw, interim, and processed data
-├── outputs/              # Logs and generated outputs
+├── configs/
+├── data/
+├── frontend/             
+│   ├── src/
+│   ├── public/
+│   ├── package.json
+│   └── vite.config.ts
+├── outputs/
 ├── src/
-│   ├── api/              # FastAPI app, schemas, and service orchestration
-│   ├── data/             # Loaders, preprocessing, and feature helpers
-│   ├── evaluation/       # Ranking metrics and offline evaluation
-│   ├── recommenders/     # Popularity, content-based, SVD, hybrid, ranker
-│   ├── features/         # Feature logic
-│   ├── models/           # Model artifacts and model-facing utilities
-│   └── pipelines/        # Pipeline entry points
-├── notebooks/            # EDA, modeling, and evaluation notebooks
-├── tests/                # Test area
-├── main.py               # Top-level placeholder entrypoint
-└── requirements.txt      # Python dependencies
+│   ├── api/
+│   ├── data/
+│   ├── evaluation/
+│   ├── recommenders/
+│   ├── features/
+│   ├── models/
+│   └── pipelines/
+├── notebooks/
+├── tests/
+├── main.py
+└── requirements.txt     
 ```
 
 ## Setup
@@ -104,6 +112,9 @@ pip install -r requirements.txt
 ```
 
 Recommended Python version: 3.10 or later.
+
+cd frontend
+npm install
 
 ## Run the API
 
@@ -117,6 +128,8 @@ Open the interactive documentation after startup:
 
 - Swagger UI: http://localhost:8000/docs
 - ReDoc: http://localhost:8000/redoc
+
+The frontend connects to the FastAPI backend running at http://localhost:8000.
 
 ## API Endpoints
 
