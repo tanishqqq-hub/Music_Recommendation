@@ -1,0 +1,44 @@
+model_version: "v1.0"
+model_trained_date: "2026-07-21"
+
+data:
+  raw_dir: data/raw
+  processed_dir: data/processed
+  lastfm_interactions: data/raw/lastfm/usersha1-artmbid-artname-plays.tsv
+  lastfm_profiles: data/raw/lastfm/usersha1-profile.tsv
+  spotify_tracks: data/raw/spotify/spotify_tracks.csv
+  sample_size: 75000
+  random_seed: 42
+
+models:
+  svd:
+    n_factors: 100
+  collaborative:
+    n_neighbors: 50
+    min_artist_interactions: 5
+  hybrid:
+    w_popularity: 0.1
+    w_svd: 0.6
+    w_content: 0.3
+    candidate_pool: 100
+
+evaluation:
+  k_values: [5, 10, 20, 50]
+
+artifacts:
+  interaction_matrix: data/processed/interaction_matrix.npz
+  user_encoder: data/processed/user_encoder.pkl
+  artist_encoder: data/processed/artist_encoder.pkl
+  artist_popularity: data/processed/artist_popularity.parquet
+  content_features: data/processed/content_features.parquet
+  user_factors: data/processed/user_factors.npy
+  artist_factors: data/processed/artist_factors.npy
+  svd_recommender: data/processed/svd_recommender.pkl
+  cb_recommender: data/processed/cb_recommender.pkl
+  cf_recommender: data/processed/cf_recommender.pkl
+  hybrid_recommender: data/processed/hybrid_recommender.pkl
+  ranker: data/processed/ranker.pkl
+  interactions: data/processed/interactions.parquet
+
+logging:
+  level: INFO
