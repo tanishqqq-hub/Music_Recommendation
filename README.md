@@ -205,23 +205,5 @@ Dataset summary:
 - Spotify Tracks: 114K tracks with audio features
 - Configured sample size: 75K users
 
-## Why It Is Resume-Worthy
 
-This project shows the kind of engineering recruiters look for in applied ML work:
-
-- end-to-end data pipeline from raw logs to serving artifacts
-- multiple recommender strategies with real fallback logic
-- config-driven inference startup rather than hard-coded paths
-- typed API contracts and documented endpoints
-- ranking and evaluation layers that go beyond a basic baseline model
-
-If you want to describe it in a resume bullet, a strong version would be:
-
-> Built and served a hybrid music recommendation system using Last.fm and Spotify data, combining popularity, SVD, and content-based retrieval behind a FastAPI API with novelty/diversity re-ranking and offline ranking evaluation.
-
-## Notes
-
-- The runtime entrypoint is [src/api/main.py](src/api/main.py).
-- The top-level [main.py](main.py) file is currently empty.
-- Artifact paths are resolved relative to the project root, so the API should be launched from the repository directory.
 
